@@ -1,5 +1,3 @@
 import { writable } from "svelte/store";
-
-export let movieList = writable([
-
-]);
+import { getFromLocalStorage } from "./functions/localStorage";
+export let movieList = writable(getFromLocalStorage());

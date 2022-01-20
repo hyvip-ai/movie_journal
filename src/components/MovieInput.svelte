@@ -2,6 +2,7 @@
   let title = "";
   let rating = 1;
   import { movieList } from "../store";
+  import { addToLocalStorage } from "../functions/localStorage";
   import {v4 as uuid} from 'uuid'
   const onTitleChange = (e) => {
     title = e.target.value;
@@ -10,6 +11,7 @@
     movieList.update(prev=>{
         return [...prev,{id:uuid(),movieName:title,rating}]
     })
+    addToLocalStorage($movieList)
     title = ''
     rating = 1
   };

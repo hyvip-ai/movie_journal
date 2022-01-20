@@ -2,7 +2,9 @@
   import { movieList } from "../store";
   import MovieItem from "./MovieItem.svelte";
   import SearchMovie from "./SearchMovie.svelte";
+  import {scale} from "svelte/transition"
   $: filteredMovieList = $movieList
+  console.log($movieList)
   const filterMovie = (e) =>{
 	  console.log(e.detail.toLowerCase())
 	  filteredMovieList = $movieList.filter(item=>item.movieName.toLowerCase().includes(e.detail.toLowerCase()))
@@ -15,7 +17,9 @@
     <h1>Movie List</h1>
   {/if}
   {#each filteredMovieList as movie (movie.id)}
-    <MovieItem movieData={movie} />
+    <div transition:scale>
+		<MovieItem movieData={movie} />
+	</div>
   {/each}
 </div>
 
